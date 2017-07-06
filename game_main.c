@@ -4,7 +4,7 @@
 //  test
 //
 //  Created by Frankie Zhu on 03/07/2017.
-//  Copyright © 2017 Frankie Zhu. All rights reserved.
+//  Copyright Â© 2017 Frankie Zhu. All rights reserved.
 //fps: 60
 
 
@@ -114,10 +114,9 @@ void draw(float stateTime) {
         brick_speed+= brick_speed_additon;
         //if(bricks_address[p1][0][1]+brick_speed == 100){}
     }
-
-        //object position init
-    fillcircle(x, y, radius);
-
+    
+	
+    //background	
     //start-brick
     coloredfillrect(0, 578+brick_speed , 150, 30, brick_border_color_R, brick_border_color_G,brick_border_color_B, brick_color_R, brick_color_G , brick_color_B);
 
@@ -192,7 +191,10 @@ void draw(float stateTime) {
     ##################################################
     ##################################################*/
 
-     //BOOM adjust
+    //object position init
+    fillcircle(x, y, radius);
+	
+    //BOOM adjust
     if (y<=554+tolerance+brick_speed&&y>=554-tolerance+brick_speed&&x>=0&&x<=0+150+24){
         moving = 0;
     }
