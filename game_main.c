@@ -190,7 +190,7 @@ void draw(float stateTime) {
     ##################################################*/
 coloredcircle(x, y, radius,0,0,0);
      //BOOM adjust
-    if (y>=554-tolerance+brick_speed&&xy<=554+tolerance+brick_speed&&x>=0&&x<=0+150+24){
+    if (y>=554-tolerance+brick_speed&&y<=554+tolerance+brick_speed&&x>=0&&x<=0+150+24){
         moving = 0;
     }
 
