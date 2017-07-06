@@ -114,9 +114,7 @@ void draw(float stateTime) {
         brick_speed+= brick_speed_additon;
         //if(bricks_address[p1][0][1]+brick_speed == 100){}
     }
-    
-	
-    //background	
+
     //start-brick
     coloredfillrect(0, 578+brick_speed , 150, 30, brick_border_color_R, brick_border_color_G,brick_border_color_B, brick_color_R, brick_color_G , brick_color_B);
 
@@ -190,32 +188,29 @@ void draw(float stateTime) {
     /*##################################################
     ##################################################
     ##################################################*/
-
-    //object position init
-    fillcircle(x, y, radius);
-	
-    //BOOM adjust
-    if (y<=554+tolerance+brick_speed&&y>=554-tolerance+brick_speed&&x>=0&&x<=0+150+24){
+coloredcircle(x, y, radius,0,0,0);
+     //BOOM adjust
+    if (y>=554-tolerance+brick_speed&&xy<=554+tolerance+brick_speed&&x>=0&&x<=0+150+24){
         moving = 0;
     }
 
-    if (y<=bricks_address[p6][5][1]-radius+tolerance+brick_speed&&y>=bricks_address[p6][5][1]-radius-tolerance+brick_speed&&x>=bricks_address[p1][5][0]&&x<=bricks_address[p1][5][0]+150+24)
+    if (y>=bricks_address[p6][5][1]-radius-tolerance+brick_speed&&y<=bricks_address[p6][5][1]-radius+tolerance+brick_speed&&x>=bricks_address[p1][5][0]&&x<=bricks_address[p1][5][0]+150+24)
     {
         moving = 0;
     }
-    if (y<=bricks_address[p4][3][1]-radius+tolerance+brick_speed&&y>=bricks_address[p4][3][1]-radius-tolerance+brick_speed&&x>=bricks_address[p4][3][0]&&x<=bricks_address[p4][3][0]+150+24)
+    if (y>=bricks_address[p4][3][1]-radius-tolerance+brick_speed&&y<=bricks_address[p4][3][1]-radius+tolerance+brick_speed&&x>=bricks_address[p4][3][0]&&x<=bricks_address[p4][3][0]+150+24)
     {
         moving = 0;
     }
-    if (y<=bricks_address[p3][2][1]-radius+tolerance+brick_speed&&y>=bricks_address[p3][2][1]-radius-tolerance+brick_speed&&x>=bricks_address[p3][2][0]&&x<=bricks_address[p3][2][0]+150+24)
+    if (y>=bricks_address[p3][2][1]-radius-tolerance+brick_speed&&y<=bricks_address[p3][2][1]-radius+tolerance+brick_speed&&x>=bricks_address[p3][2][0]&&x<=bricks_address[p3][2][0]+150+24)
     {
         moving = 0;
     }
-    if (y<=bricks_address[p2][1][1]-radius+tolerance+brick_speed&&y>=bricks_address[p2][1][1]-radius-tolerance+brick_speed&&x>=bricks_address[p2][1][0]&&x<=bricks_address[p2][1][0]+150+24)
+    if (y>=bricks_address[p2][1][1]-radius-tolerance+brick_speed&&y<=bricks_address[p2][1][1]-radius+tolerance+brick_speed&&x>=bricks_address[p2][1][0]&&x<=bricks_address[p2][1][0]+150+24)
     {
         moving = 0;
     }
-    if (y<=bricks_address[p1][0][1]-radius+tolerance+brick_speed&&y>=bricks_address[p1][0][1]-radius-tolerance+brick_speed&&x>=bricks_address[p1][0][0]&&x<=bricks_address[p1][0][0]+150+24)
+    if (y>=bricks_address[p1][0][1]-radius-tolerance+brick_speed&&y<=bricks_address[p1][0][1]-radius+tolerance+brick_speed&&x>=bricks_address[p1][0][0]&&x<=bricks_address[p1][0][0]+150+24)
     {
         moving = 0;
     }
@@ -224,23 +219,23 @@ void draw(float stateTime) {
     ##################################################
     ##################################################*/
 
-    if (y<=bricks_address[p11][5][1]-radius+tolerance+brick_speed- cycle_length&&y>=bricks_address[p11][5][1]-radius-tolerance+brick_speed- cycle_length&&x>=bricks_address[p1][5][0]&&x<=bricks_address[p1][5][0]+150+24)
+    if (y>=bricks_address[p11][5][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p11][5][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p1][5][0]&&x<=bricks_address[p1][5][0]+150+24)
     {
         moving = 0;
     }
-    if (y<=bricks_address[p10][3][1]-radius+tolerance+brick_speed- cycle_length&&y>=bricks_address[p10][3][1]-radius-tolerance+brick_speed- cycle_length&&x>=bricks_address[p4][3][0]&&x<=bricks_address[p4][3][0]+150+24)
+    if (y>=bricks_address[p10][3][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p10][3][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p4][3][0]&&x<=bricks_address[p4][3][0]+150+24)
     {
         moving = 0;
     }
-    if (y<=bricks_address[p9][2][1]-radius+tolerance+brick_speed- cycle_length&&y>=bricks_address[p9][2][1]-radius-tolerance+brick_speed- cycle_length&&x>=bricks_address[p3][2][0]&&x<=bricks_address[p3][2][0]+150+24)
+    if (y>=bricks_address[p9][2][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p9][2][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p3][2][0]&&x<=bricks_address[p3][2][0]+150+24)
     {
         moving = 0;
     }
-    if (y<=bricks_address[p8][1][1]-radius+tolerance+brick_speed- cycle_length&&y>=bricks_address[p8][1][1]-radius-tolerance+brick_speed- cycle_length&&x>=bricks_address[p2][1][0]&&x<=bricks_address[p2][1][0]+150+24)
+    if (y>=bricks_address[p8][1][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p8][1][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p2][1][0]&&x<=bricks_address[p2][1][0]+150+24)
     {
         moving = 0;
     }
-    if (y<=bricks_address[p7][0][1]-radius+tolerance+brick_speed- cycle_length&&y>=bricks_address[p7][0][1]-radius-tolerance+brick_speed- cycle_length&&x>=bricks_address[p1][0][0]&&x<=bricks_address[p1][0][0]+150+24)
+    if (y>=bricks_address[p7][0][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p7][0][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p1][0][0]&&x<=bricks_address[p1][0][0]+150+24)
     {
         moving = 0;
     }
