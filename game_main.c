@@ -261,7 +261,7 @@ coloredcircle(x, y, radius,0,0,0);
     
     //show score
     itoa(score_counter,score,10);
-    text(xx,131,15,150.150.150)
+    text(score,131,15,150.150.150)
 
     //y axis movement adjust
     if(moving == 0)
