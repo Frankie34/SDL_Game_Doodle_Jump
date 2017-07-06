@@ -192,7 +192,10 @@ void draw(float stateTime) {
     /*##################################################
     ##################################################
     ##################################################*/
-coloredcircle(x, y, radius,0,0,0);
+
+    //object position
+    coloredcircle(x, y, radius,0,0,0);
+     
      //BOOM adjust
     if (y>=554-tolerance+brick_speed&&y<=554+tolerance+brick_speed&&x>=0&&x<=0+150+24){
         moving = 0;
@@ -261,17 +264,21 @@ coloredcircle(x, y, radius,0,0,0);
     
     //show score
     itoa(score_counter,score,10);
-    text(score,131,15,150.150.150)
+    text(score,185,30,150.150.150)
 
     //y axis movement adjust
     if(moving == 0)
     {
-        y = y+brick_speed;
+        y = y+brick_speed_additon;
     }
     else if(moving == 1)
-    {image(Up, x-radius, y-radius);}
+    {
+        image(Up, x-radius, y-radius);
+    }
     else if(moving == 2)
-    {image(Down, x-radius, y-radius);}
+    {
+        image(Down, x-radius, y-radius);
+    }
     else if(moving)
     {
         y = y+gravity;
@@ -280,9 +287,13 @@ coloredcircle(x, y, radius,0,0,0);
 
     //x axis movement adjust
     if(moving == 3)
-    {image(Left, x-radius, y-radius);}
+    {
+        image(Left, x-radius, y-radius);
+    }
     else if(moving == 4)
-    {image(Right, x-radius, y-radius);}
+    {
+        image(Right, x-radius, y-radius);
+    }
 
 }
 
@@ -343,4 +354,3 @@ void close() {
     unloadimage(Left);
     unloadimage(Right);
 }
-
