@@ -62,6 +62,10 @@ int cycle_length = 667;
 int brick_speed = 0;
 int brick_speed_additon = 1;
 
+//score
+char score[50];
+int score_counter = 0;
+
 //starter parameter {0,1,2}
 int start = 1;
 
@@ -192,27 +196,33 @@ coloredcircle(x, y, radius,0,0,0);
      //BOOM adjust
     if (y>=554-tolerance+brick_speed&&y<=554+tolerance+brick_speed&&x>=0&&x<=0+150+24){
         moving = 0;
+        score_counter++;
     }
 
     if (y>=bricks_address[p6][5][1]-radius-tolerance+brick_speed&&y<=bricks_address[p6][5][1]-radius+tolerance+brick_speed&&x>=bricks_address[p1][5][0]&&x<=bricks_address[p1][5][0]+150+24)
     {
         moving = 0;
+        score_counter++;
     }
     if (y>=bricks_address[p4][3][1]-radius-tolerance+brick_speed&&y<=bricks_address[p4][3][1]-radius+tolerance+brick_speed&&x>=bricks_address[p4][3][0]&&x<=bricks_address[p4][3][0]+150+24)
     {
         moving = 0;
+        score_counter++;
     }
     if (y>=bricks_address[p3][2][1]-radius-tolerance+brick_speed&&y<=bricks_address[p3][2][1]-radius+tolerance+brick_speed&&x>=bricks_address[p3][2][0]&&x<=bricks_address[p3][2][0]+150+24)
     {
         moving = 0;
+        score_counter++;
     }
     if (y>=bricks_address[p2][1][1]-radius-tolerance+brick_speed&&y<=bricks_address[p2][1][1]-radius+tolerance+brick_speed&&x>=bricks_address[p2][1][0]&&x<=bricks_address[p2][1][0]+150+24)
     {
         moving = 0;
+        score_counter++;
     }
     if (y>=bricks_address[p1][0][1]-radius-tolerance+brick_speed&&y<=bricks_address[p1][0][1]-radius+tolerance+brick_speed&&x>=bricks_address[p1][0][0]&&x<=bricks_address[p1][0][0]+150+24)
     {
         moving = 0;
+        score_counter++;
     }
 
     /*##################################################
@@ -222,28 +232,36 @@ coloredcircle(x, y, radius,0,0,0);
     if (y>=bricks_address[p11][5][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p11][5][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p1][5][0]&&x<=bricks_address[p1][5][0]+150+24)
     {
         moving = 0;
+        score_counter++;
     }
     if (y>=bricks_address[p10][3][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p10][3][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p4][3][0]&&x<=bricks_address[p4][3][0]+150+24)
     {
         moving = 0;
+        score_counter++;
     }
     if (y>=bricks_address[p9][2][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p9][2][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p3][2][0]&&x<=bricks_address[p3][2][0]+150+24)
     {
         moving = 0;
+        score_counter++;
     }
     if (y>=bricks_address[p8][1][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p8][1][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p2][1][0]&&x<=bricks_address[p2][1][0]+150+24)
     {
         moving = 0;
+        score_counter++;
     }
     if (y>=bricks_address[p7][0][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p7][0][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p1][0][0]&&x<=bricks_address[p1][0][0]+150+24)
     {
         moving = 0;
+        score_counter++;
     }
 
     /*##################################################
     ##################################################
     ##################################################*/
-
+    
+    //show score
+    itoa(score_counter,score,10);
+    text(xx,131,15,150.150.150)
 
     //y axis movement adjust
     if(moving == 0)
@@ -278,51 +296,51 @@ void mouseRelease() {
 
 //
 void keyDown() {
-	//y axis movement parameter adjust
+    //y axis movement parameter adjust
     if(key == KEY_W){
-    	start = 2;
+        start = 2;
         moving = 1;
-    	y = y-y_speed;
+        y = y-y_speed;
     }
-	if(key == KEY_S&&moving != 0){
-	   moving = 2;
-	   y = y+y_speed;
-	}
+    if(key == KEY_S&&moving != 0){
+       moving = 2;
+       y = y+y_speed;
+    }
 
     //x axis movement parameter adjust
     if(key == KEY_A){
         moving = 3;
         x = x-x_speed;
-	}
-	if(key == KEY_D){
-	   moving = 4;
-	   x = x+x_speed;
-	}
+    }
+    if(key == KEY_D){
+       moving = 4;
+       x = x+x_speed;
+    }
 }
 void keyUp() {
     //y axis movement parameter init
     if(key == KEY_W){
         moving = 5;
-	}
-	if(key == KEY_A){
+    }
+    if(key == KEY_A){
         moving = 5;
-	}
+    }
 
     //x axis movement parameter init
     if(key == KEY_S){
         moving = 5;
-	}
-	if(key == KEY_D){
+    }
+    if(key == KEY_D){
         moving = 5;
-	}
+    }
 
 }
 
 //
 void close() {
-	unloadimage(Down);
-	unloadimage(Up);
-	unloadimage(Left);
-	unloadimage(Right);
+    unloadimage(Down);
+    unloadimage(Up);
+    unloadimage(Left);
+    unloadimage(Right);
 }
 
