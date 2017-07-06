@@ -21,19 +21,19 @@ Image* Right;
 
 //object parameter
 int x = 72;
-int y = 554;
+int y = 504;
 int radius = 24;
 int gravity = 2;
 int moving = 5;
 int y_speed = 3;
-int x_speed = 3;
-int tolerance = 2;
+int x_speed = 5;
+int tolerance = 3;
 int counter = 0;
 
 //brick color
-int brick_color_R = 255;
-int brick_color_G = 255;
-int brick_color_B = 255;
+int brick_color_R = 0;
+int brick_color_G = 0;
+int brick_color_B = 0;
 int brick_border_color_R = 0;
 int brick_border_color_G = 0;
 int brick_border_color_B = 0;
@@ -68,7 +68,15 @@ int score_counter = 0;
 
 //starter parameter {0,1,2}
 int start = 1;
-
+int cover = 1;
+int cover_x = 0;
+int cover_y = 0;
+int cover_color1 = 150;
+int cover_color2 = 150;
+int cover_color3 = 150;
+int cover_color_change1 = -1;
+int cover_color_change2 = -1;
+int cover_color_change3 = -1;
 
 void setup() {
     //window size
@@ -110,14 +118,45 @@ void draw(float stateTime) {
     }
 
 
-    // starter
+    // starter and cover setting
+    if(cover){
+     coloredfillrect(cover_x,cover_y,375,667,0,0,0,0,0,0);
+     coloredfillrect(50,200,275,367,cover_color1,cover_color2,cover_color3,0,0,0);
+     coloredfillrect(75,225,225,317,0,0,0,0,0,0);
+     coloredfillrect(50,200,275,367,cover_color1,cover_color2,cover_color3,0,0,0);
+     coloredfillrect(75,225,225,317,0,0,0,0,0,0);
+     textsize(100);
+     text("      START",cover_x+160,cover_y+430,rand()%256,rand()%256,rand()%256);
+     if(cover_color1 == 100||cover_color1==233){
+         cover_color_change1 = -cover_color_change1;
+         cover_color1+=cover_color_change1;
+        }else{
+         cover_color1+=cover_color_change1;
+        }
+    if(cover_color2 == 100||cover_color2==233){
+        cover_color_change2 = -cover_color_change2;
+        cover_color2+=cover_color_change2;
+        }else{
+         cover_color2+=cover_color_change2;
+        }
+    if(cover_color3 == 100||cover_color3==233){
+        cover_color_change3 = -cover_color_change3;
+        cover_color3+=cover_color_change3;
+        }else{
+         cover_color3+=cover_color_change3;
+        }
+    }else {
+        coloredfillrect(0,0,375,667,255,255,255,255,255,255);
     if(start == 1){
         srand( (unsigned)time( NULL ) );
         start = 0;
     }else if(start == 2){
-        brick_speed+= brick_speed_additon;
-        //if(bricks_address[p1][0][1]+brick_speed == 100){}
-    }
+        brick_speed+= brick_speed_additon;}
+
+
+    //show score
+    itoa(score_counter,score,10);
+    text(score,185,300,150,150,150);
 
     //start-brick
     coloredfillrect(0, 578+brick_speed , 150, 30, brick_border_color_R, brick_border_color_G,brick_border_color_B, brick_color_R, brick_color_G , brick_color_B);
@@ -195,34 +234,64 @@ void draw(float stateTime) {
 
     //object position
     coloredcircle(x, y, radius,0,0,0);
-     
+
      //BOOM adjust
-    if (y>=554-tolerance+brick_speed&&y<=554+tolerance+brick_speed&&x>=0&&x<=0+150+24){
+    if (y>=578-radius-tolerance+brick_speed&&y<=578-radius+tolerance+brick_speed&&x>=radius&&x<=150){
         moving = 0;
         score_counter++;
     }
 
-    if (y>=bricks_address[p6][5][1]-radius-tolerance+brick_speed&&y<=bricks_address[p6][5][1]-radius+tolerance+brick_speed&&x>=bricks_address[p1][5][0]&&x<=bricks_address[p1][5][0]+150+24)
+    if (y>=bricks_address[p6][5][1]-radius-tolerance+brick_speed&&y<=bricks_address[p6][5][1]-radius+tolerance+brick_speed&&x>=bricks_address[p1][5][0]&&x<=bricks_address[p1][5][0]+150)
     {
         moving = 0;
         score_counter++;
     }
-    if (y>=bricks_address[p4][3][1]-radius-tolerance+brick_speed&&y<=bricks_address[p4][3][1]-radius+tolerance+brick_speed&&x>=bricks_address[p4][3][0]&&x<=bricks_address[p4][3][0]+150+24)
+    if (y>=bricks_address[p4][3][1]-radius-tolerance+brick_speed&&y<=bricks_address[p4][3][1]-radius+tolerance+brick_speed&&x>=bricks_address[p4][3][0]&&x<=bricks_address[p4][3][0]+150)
     {
         moving = 0;
         score_counter++;
     }
-    if (y>=bricks_address[p3][2][1]-radius-tolerance+brick_speed&&y<=bricks_address[p3][2][1]-radius+tolerance+brick_speed&&x>=bricks_address[p3][2][0]&&x<=bricks_address[p3][2][0]+150+24)
+    if (y>=bricks_address[p3][2][1]-radius-tolerance+brick_speed&&y<=bricks_address[p3][2][1]-radius+tolerance+brick_speed&&x>=bricks_address[p3][2][0]&&x<=bricks_address[p3][2][0]+150)
     {
         moving = 0;
         score_counter++;
     }
-    if (y>=bricks_address[p2][1][1]-radius-tolerance+brick_speed&&y<=bricks_address[p2][1][1]-radius+tolerance+brick_speed&&x>=bricks_address[p2][1][0]&&x<=bricks_address[p2][1][0]+150+24)
+    if (y>=bricks_address[p2][1][1]-radius-tolerance+brick_speed&&y<=bricks_address[p2][1][1]-radius+tolerance+brick_speed&&x>=bricks_address[p2][1][0]&&x<=bricks_address[p2][1][0]+150)
     {
         moving = 0;
         score_counter++;
     }
-    if (y>=bricks_address[p1][0][1]-radius-tolerance+brick_speed&&y<=bricks_address[p1][0][1]-radius+tolerance+brick_speed&&x>=bricks_address[p1][0][0]&&x<=bricks_address[p1][0][0]+150+24)
+    if (y>=bricks_address[p1][0][1]-radius-tolerance+brick_speed&&y<=bricks_address[p1][0][1]-radius+tolerance+brick_speed&&x>=bricks_address[p1][0][0]&&x<=bricks_address[p1][0][0]+150)
+    {
+        moving = 0;
+        score_counter++;
+    }
+
+    /*##################################################
+    ##################################################
+    ##################################################*/
+
+    if (y>=bricks_address[p11][5][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p11][5][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p1][5][0]&&x<=bricks_address[p1][5][0]+150)
+    {
+        moving = 0;
+        score_counter++;
+    }
+    if (y>=bricks_address[p10][3][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p10][3][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p4][3][0]&&x<=bricks_address[p4][3][0]+150)
+    {
+        moving = 0;
+        score_counter++;
+    }
+    if (y>=bricks_address[p9][2][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p9][2][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p3][2][0]&&x<=bricks_address[p3][2][0]+150)
+    {
+        moving = 0;
+        score_counter++;
+    }
+    if (y>=bricks_address[p8][1][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p8][1][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p2][1][0]&&x<=bricks_address[p2][1][0]+150)
+    {
+        moving = 0;
+        score_counter++;
+    }
+    if (y>=bricks_address[p7][0][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p7][0][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p1][0][0]&&x<=bricks_address[p1][0][0]+150)
     {
         moving = 0;
         score_counter++;
@@ -232,42 +301,9 @@ void draw(float stateTime) {
     ##################################################
     ##################################################*/
 
-    if (y>=bricks_address[p11][5][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p11][5][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p1][5][0]&&x<=bricks_address[p1][5][0]+150+24)
-    {
-        moving = 0;
-        score_counter++;
-    }
-    if (y>=bricks_address[p10][3][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p10][3][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p4][3][0]&&x<=bricks_address[p4][3][0]+150+24)
-    {
-        moving = 0;
-        score_counter++;
-    }
-    if (y>=bricks_address[p9][2][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p9][2][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p3][2][0]&&x<=bricks_address[p3][2][0]+150+24)
-    {
-        moving = 0;
-        score_counter++;
-    }
-    if (y>=bricks_address[p8][1][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p8][1][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p2][1][0]&&x<=bricks_address[p2][1][0]+150+24)
-    {
-        moving = 0;
-        score_counter++;
-    }
-    if (y>=bricks_address[p7][0][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p7][0][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p1][0][0]&&x<=bricks_address[p1][0][0]+150+24)
-    {
-        moving = 0;
-        score_counter++;
-    }
-
-    /*##################################################
-    ##################################################
-    ##################################################*/
-    
-    //show score
-    itoa(score_counter,score,10);
-    text(score,185,30,150,150,150);
 
     //y axis movement adjust
-    if(moving == 0)
+    if(moving == 0&&start ==2)
     {
         y = y+brick_speed_additon;
     }
@@ -294,7 +330,7 @@ void draw(float stateTime) {
     {
         image(Right, x-radius, y-radius);
     }
-
+    }
 }
 
 //
@@ -307,6 +343,9 @@ void mouseRelease() {
 
 //
 void keyDown() {
+    if(key == KEY_SPACE){
+    cover =!cover;
+    }
     //y axis movement parameter adjust
     if(key == KEY_W){
         start = 2;
