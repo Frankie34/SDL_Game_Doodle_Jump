@@ -264,7 +264,7 @@ void draw(float stateTime) {
     
     //show score
     itoa(score_counter,score,10);
-    text(score,185,30,150.150.150)
+    text(score,185,30,150,150,150);
 
     //y axis movement adjust
     if(moving == 0)
