@@ -1,4 +1,3 @@
-
 //
 //  main.c
 //  test
@@ -18,8 +17,12 @@ Image* Up;
 Image* Down;
 Image* Left;
 Image* Right;
+Image* Game_over;
+Sound* GAME;
+Sound* GAME_OVER;
 
 //object parameter
+int play = 1;
 int x = 72;
 int y = 504;
 int radius = 24;
@@ -61,6 +64,18 @@ int cycle_length = 667;
 //brick move parameter
 int brick_speed = 0;
 int brick_speed_additon = 1;
+int once1 =1;
+int once2 =1;
+int once3 =1;
+int once4 =1;
+int once5 =1;
+int once6 =1;
+int once7 =1;
+int once8 =1;
+int once9 =1;
+int once10 =1;
+int once11 =1;
+
 
 //score
 char score[50];
@@ -87,6 +102,9 @@ void setup() {
     Down = loadimage("image/down.png");
     Left = loadimage("image/left.png");
     Right = loadimage("image/right.png");
+    Game_over = loadimage("image/game_over.png");
+    GAME = loadsound("sound/GAME_OVER.mp3");
+    GAME_OVER = loadsound("sound/GAME_START.mp3");
 
 }
 
@@ -148,15 +166,19 @@ void draw(float stateTime) {
     }else {
         coloredfillrect(0,0,375,667,255,255,255,255,255,255);
     if(start == 1){
+
         srand( (unsigned)time( NULL ) );
         start = 0;
     }else if(start == 2){
         brick_speed+= brick_speed_additon;}
-
+        if(play){
+        playsound(GAME);
+        //play = 0;
+        }else{ playsound(GAME_OVER);}
 
     //show score
     itoa(score_counter,score,10);
-    text(score,185,300,150,150,150);
+    text(score,185,400,150,150,150);
 
     //start-brick
     coloredfillrect(0, 578+brick_speed , 150, 30, brick_border_color_R, brick_border_color_G,brick_border_color_B, brick_color_R, brick_color_G , brick_color_B);
@@ -238,33 +260,45 @@ void draw(float stateTime) {
      //BOOM adjust
     if (y>=578-radius-tolerance+brick_speed&&y<=578-radius+tolerance+brick_speed&&x>=radius&&x<=150){
         moving = 0;
-        score_counter++;
+        if(once1)
+        {score_counter++;
+        once1 =!once1;}
     }
 
     if (y>=bricks_address[p6][5][1]-radius-tolerance+brick_speed&&y<=bricks_address[p6][5][1]-radius+tolerance+brick_speed&&x>=bricks_address[p1][5][0]&&x<=bricks_address[p1][5][0]+150)
     {
         moving = 0;
-        score_counter++;
+        if(once2)
+        {score_counter++;
+        once2 =!once2;}
     }
     if (y>=bricks_address[p4][3][1]-radius-tolerance+brick_speed&&y<=bricks_address[p4][3][1]-radius+tolerance+brick_speed&&x>=bricks_address[p4][3][0]&&x<=bricks_address[p4][3][0]+150)
     {
         moving = 0;
-        score_counter++;
+        if(once3)
+        {score_counter++;
+        once3 =!once3;}
     }
     if (y>=bricks_address[p3][2][1]-radius-tolerance+brick_speed&&y<=bricks_address[p3][2][1]-radius+tolerance+brick_speed&&x>=bricks_address[p3][2][0]&&x<=bricks_address[p3][2][0]+150)
     {
         moving = 0;
-        score_counter++;
+        if(once4)
+        {score_counter++;
+        once4 =!once4;}
     }
     if (y>=bricks_address[p2][1][1]-radius-tolerance+brick_speed&&y<=bricks_address[p2][1][1]-radius+tolerance+brick_speed&&x>=bricks_address[p2][1][0]&&x<=bricks_address[p2][1][0]+150)
     {
         moving = 0;
-        score_counter++;
+        if(once5)
+        {score_counter++;
+        once5 =!once5;}
     }
     if (y>=bricks_address[p1][0][1]-radius-tolerance+brick_speed&&y<=bricks_address[p1][0][1]-radius+tolerance+brick_speed&&x>=bricks_address[p1][0][0]&&x<=bricks_address[p1][0][0]+150)
     {
         moving = 0;
-        score_counter++;
+       if(once6)
+        {score_counter++;
+        once6 =!once6;}
     }
 
     /*##################################################
@@ -274,38 +308,55 @@ void draw(float stateTime) {
     if (y>=bricks_address[p11][5][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p11][5][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p1][5][0]&&x<=bricks_address[p1][5][0]+150)
     {
         moving = 0;
-        score_counter++;
+        if(once7)
+        {score_counter++;
+        once7 =!once7;}
     }
     if (y>=bricks_address[p10][3][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p10][3][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p4][3][0]&&x<=bricks_address[p4][3][0]+150)
     {
         moving = 0;
-        score_counter++;
+        if(once8)
+        {score_counter++;
+        once8 =!once8;}
     }
     if (y>=bricks_address[p9][2][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p9][2][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p3][2][0]&&x<=bricks_address[p3][2][0]+150)
     {
         moving = 0;
-        score_counter++;
+        if(once9)
+        {score_counter++;
+        once9 =!once9;}
     }
     if (y>=bricks_address[p8][1][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p8][1][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p2][1][0]&&x<=bricks_address[p2][1][0]+150)
     {
         moving = 0;
-        score_counter++;
+        if(once10)
+        {score_counter++;
+        once10 =!once10;}
     }
     if (y>=bricks_address[p7][0][1]-radius-tolerance+brick_speed- cycle_length&&y<=bricks_address[p7][0][1]-radius+tolerance+brick_speed- cycle_length&&x>=bricks_address[p1][0][0]&&x<=bricks_address[p1][0][0]+150)
     {
         moving = 0;
-        score_counter++;
+        if(once11)
+        {score_counter++;
+        once11 =!once11;}
     }
 
     /*##################################################
     ##################################################
     ##################################################*/
 
+     //game_over
+    if(y-radius>=667){
+        //coloredfillrect(50,100,275,467,0,0,0,255,255,255);
+        image(Game_over,70,30);
+        playsound(GAME_OVER);
+    }
 
     //y axis movement adjust
     if(moving == 0&&start ==2)
     {
         y = y+brick_speed_additon;
+
     }
     else if(moving == 1)
     {
@@ -392,4 +443,6 @@ void close() {
     unloadimage(Up);
     unloadimage(Left);
     unloadimage(Right);
+    unloadsound(GAME);
+    unloadsound(GAME_OVER);
 }
